@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 广州亿铭工业自动化</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">YIMING <span style="color:#e74c3c">AUTO</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="nav_home">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html" data-i18n="nav_products">产品中心</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" data-i18n="nav_about">关于我们</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html" data-i18n="nav_contact">联系我们</a></li>
+                    <li class="nav-item ms-3"><button class="btn btn-outline-danger btn-sm" onclick="switchLang()">EN/CN</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面标题 -->
+    <header class="page-header">
+        <div class="container text-center">
+            <h1 data-i18n="page_title_contact">联系我们</h1>
+            <p>Contact Us</p>
+        </div>
+    </header>
+
+    <!-- 联系内容 -->
+    <section class="section-container">
+        <div class="container">
+            <div class="row">
+                <!-- 左侧：联系信息 -->
+                <div class="col-lg-5 mb-4">
+                    <div class="contact-info p-4 bg-white shadow-sm h-100">
+                        <h3 class="mb-4" data-i18n="contact_info_title">联系信息</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_company">公司名称：</strong><br>
+                                <span data-i18n="footer_company_name">广州亿铭工业自动化科技有限公司</span>
+                            </li>
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_address">地址：</strong><br>
+                                <span data-i18n="footer_address">广州增城增江街东方村光墩路38号</span>
+                            </li>
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_phone">电话：</strong><br>
+                                020-82627482
+                            </li>
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_mobile">手机：</strong><br>
+                                13352862388
+                            </li>
+                        </ul>
+                        
+                        <!-- ✅ 添加微信按钮 -->
+                        <button class="btn btn-success w-100 mt-3" data-bs-toggle="modal" data-bs-target="#wechatModal">
+                            📱 <span data-i18n="contact_wechat_btn">点击查看微信二维码</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 右侧：留言表单 -->
+                <div class="col-lg-7">
+                    <div class="p-4 bg-white shadow-sm h-100">
+                        <h3 class="mb-4" data-i18n="form_message">留言内容</h3>
+                        
+                        <!-- 核心修改：FormSubmit 接口已配置 -->
+                        <form action="https://formsubmit.co/anonyl@163.com" method="POST" enctype="application/x-www-form-urlencoded">
+                            
+                            <!-- 安全验证与跳转设置 -->
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="contact.html?status=success">
+                            <input type="hidden" name="_subject" value="新留言：广州亿铭官网">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" name="name" class="form-control" placeholder="您的姓名" data-i18n-placeholder="form_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="电子邮件" data-i18n-placeholder="form_email" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" name="company" class="form-control" placeholder="公司名称" data-i18n-placeholder="form_company">
+                            </div>
+
+                            <div class="mb-3">
+                                <select name="subject" class="form-select" required>
+                                    <option value="" disabled selected data-i18n="form_subject">咨询主题</option>
+                                    <option value="产品咨询" data-i18n="form_subject_opt1">产品咨询</option>
+                                    <option value="技术支持" data-i18n="form_subject_opt2">技术支持</option>
+                                    <option value="其他" data-i18n="form_subject_opt3">其他</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <textarea name="message" class="form-control" rows="5" placeholder="留言内容..." data-i18n-placeholder="form_message" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-danger btn-lg w-100" data-i18n="form_submit">发送留言</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ 微信二维码弹窗 -->
+    <div class="modal fade" id="wechatModal" tabindex="-1" aria-labelledby="wechatModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="wechatModalLabel" data-i18n="wechat_modal_title">微信扫码联系我们</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <!-- 请将 src 替换为你真实的微信二维码图片路径 -->
+                    <img src="images/wechat-qr.jpg" alt="微信二维码" class="img-fluid" style="max-width: 300px; width: 100%;">
+                    <p class="mt-3 text-muted" data-i18n="wechat_modal_desc">请使用微信扫一扫添加好友</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>© 2024 Guangzhou Yiming Industrial Automation Technology Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- 提交成功提示脚本 -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('status') === 'success') {
+            alert('留言发送成功！我们将尽快与您联系。\nMessage sent successfully! We will contact you soon.');
+            // 清除URL参数，防止刷新重复弹窗
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    </script>
+</body>
+</html>
