@@ -5,6 +5,11 @@ const translations = {
     nav_products: { cn: '产品中心', en: 'Products' },
     nav_about: { cn: '关于我们', en: 'About Us' },
     nav_contact: { cn: '联系我们', en: 'Contact Us' },
+    nav_privacy: { cn: '隐私政策', en: 'Privacy Policy' },
+
+    // 页面标题：隐私政策
+    page_title_privacy: { cn: '隐私政策', en: 'Privacy Policy' },
+    page_subtitle_privacy: { cn: 'Privacy Policy', en: 'Privacy Policy' },
 
     // === index.html 翻译 ===
     hero_title: { cn: '专业房车空调<br>智造清凉旅途', en: 'Professional RV Air Conditioners<br>Cool Comfort for Every Journey' },
@@ -62,6 +67,7 @@ const translations = {
     form_subject_opt3: { cn: '其他', en: 'Other' },
     form_message: { cn: '留言内容', en: 'Message' },
     form_submit: { cn: '发送留言', en: 'Send Message' },
+    form_privacy_note: { cn: '提交即表示您同意我们按《隐私政策》处理您填写的信息，留言将通过第三方表单服务转发至本公司邮箱。', en: 'By submitting, you agree that we process your information in accordance with our Privacy Policy. Your message will be forwarded to our company mailbox via a third-party form service.' },
     form_success: { cn: '留言发送成功！我们将尽快与您联系。', en: 'Message sent successfully! We will contact you soon.' },
 	
 	// 在 translations 对象中补充：

@@ -31,7 +31,12 @@ const ProductPage = {
             outdoor:      { cn: '搭配外机型号', en: 'Matching Outdoor Units' },
             contact:      { cn: '联系我们咨询', en: 'Contact Us for Inquiry' },
             notFound:     { cn: '未找到该产品，请返回产品中心浏览。', en: 'Product not found. Please go back to the products page.' },
-            loadError:    { cn: '产品数据加载失败，请稍后重试。', en: 'Failed to load products. Please try again later.' }
+            loadError:    { cn: '产品数据加载失败，请稍后重试。', en: 'Failed to load products. Please try again later.' },
+            manualTitle:  { cn: '产品说明书', en: 'Instruction Manual' },
+            manualDown:   { cn: '下载产品说明书', en: 'Download Manual' },
+            manualNone:   { cn: '暂无说明书', en: 'Manual Not Available' },
+            manualTip:    { cn: '该产品说明书正在整理中，欢迎联系我们索取。', en: 'The manual is being prepared. Please contact us to request a copy.' },
+            manualLink:   { cn: '前往联系页面索取', en: 'Contact us for a copy' }
         };
         return (dict[key] || {})[this.lang()] || key;
     },
@@ -146,12 +151,67 @@ const ProductPage = {
                     <table class="table table-bordered">
                         <tbody>${specRows}</tbody>
                     </table>
-                    <div class="mt-4">
-                        <a href="contact.html" class="btn btn-danger me-2">${this.ui('contact')}</a>
+                    <div class="mt-4 d-flex flex-wrap gap-2 align-items-center">
+                        <a href="contact.html" class="btn btn-danger">${this.ui('contact')}</a>
+                        <!-- 说明书下载位（由 renderManual 异步填充） -->
+                        <span id="product-manual-box"></span>
                     </div>
                 </div>
             </div>
             ${outdoorHtml}`;
+
+        this.renderManual(p);
+    },
+
+    /** 说明书 HTML：暂无 */
+    manualEmptyHtml() {
+        return `
+            <span class="btn btn-outline-secondary disabled manual-btn">${this.ui('manualNone')}</span>
+            <small class="text-muted ms-2">${this.ui('manualTip')}
+                <a href="contact.html" class="ms-1">${this.ui('manualLink')}</a>
+            </small>`;
+    },
+
+    /**
+     * 渲染说明书下载区
+     * 1. 按 ManualStore 取路径；没有配置 -> 暂无说明书
+     * 2. 有路径 -> 先渲染下载按钮，再异步探测文件是否真实存在
+     * 3. 探测为 404 -> 替换为「暂无说明书」
+     */
+    async renderManual(p) {
+        const box = document.getElementById('product-manual-box');
+        if (!box) return;
+
+        const url = (window.ManualStore ? ManualStore.url(p) : '');
+        if (!url) {
+            box.innerHTML = this.manualEmptyHtml();
+            return;
+        }
+
+        const sizeText = (bytes) => {
+            if (!ManualConfig.showFileSize) return '';
+            const s = ManualStore.formatSize(bytes);
+            return s ? ` <small class="manual-size">PDF · ${s}</small>` : '';
+        };
+
+        box.innerHTML = `
+            <a id="product-manual-link" class="btn btn-outline-danger manual-btn"
+               href="${this.escapeHtml(url)}"
+               ${ManualConfig.openInNewTab ? 'target="_blank" rel="noopener"' : ''}
+               download>
+                <span class="manual-icon">&#128462;</span>${this.ui('manualDown')}
+            </a>`;
+
+        if (!ManualConfig.probe) return;
+        const result = await ManualStore.exists(url);
+        if (!result.ok) {
+            box.innerHTML = this.manualEmptyHtml();
+            return;
+        }
+        if (result.size) {
+            const link = document.getElementById('product-manual-link');
+            if (link) link.insertAdjacentHTML('beforeend', sizeText(result.size));
+        }
     },
 
     /* ---------------- index.html 推荐位 ---------------- */

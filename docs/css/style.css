@@ -481,3 +481,161 @@ footer {
     object-fit: contain;
     padding: 10px;
 }
+
+/* =========================================
+   13. 首页轮播图 (home-slides.js 渲染)
+   ========================================= */
+.hero-slide {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #0f2027;
+    padding-top: 70px;   /* 避让固定导航栏 */
+    overflow: hidden;
+}
+
+/* 左侧深色遮罩，保证文字可读 */
+.hero-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15, 32, 39, 0.88) 0%, rgba(15, 32, 39, 0.55) 45%, rgba(15, 32, 39, 0.15) 100%);
+    pointer-events: none;
+}
+
+.hero-slide .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-slide-title {
+    font-size: 3.2em;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero-slide-desc {
+    font-size: 1.25em;
+    font-weight: 300;
+    color: #fff;
+    opacity: 0.92;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.home-carousel .carousel-control-prev-icon,
+.home-carousel .carousel-control-next-icon {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.home-carousel .carousel-indicators {
+    margin-bottom: 1.2rem;
+}
+
+@media (max-width: 991.98px) {
+    .hero-slide { min-height: 480px !important; }
+    .hero-slide-title { font-size: 2.2em; }
+    .hero-slide-desc { font-size: 1.05em; }
+}
+
+@media (max-width: 575.98px) {
+    .hero-slide { min-height: 420px !important; }
+    .hero-slide-title { font-size: 1.8em; }
+    .hero-slide-desc { font-size: 0.95em; }
+}
+
+/* =========================================
+   14. 产品说明书下载按钮
+   ========================================= */
+#product-manual-box {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.manual-btn {
+    border-radius: 25px;
+}
+
+.manual-icon {
+    margin-right: 6px;
+}
+
+.manual-size {
+    margin-left: 6px;
+    font-weight: 400;
+    opacity: 0.75;
+}
+
+/* =========================================
+   15. 隐私政策正文排版
+   ========================================= */
+.privacy-doc {
+    line-height: 1.9;
+    color: #444;
+}
+
+.privacy-meta {
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+.privacy-intro {
+    background: #f7f9fc;
+    border-left: 4px solid #0056b3;
+    padding: 16px 20px;
+    border-radius: 8px;
+    text-align: justify;
+}
+
+.privacy-section {
+    margin-top: 38px;
+}
+
+.privacy-section-title {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 4px solid #0056b3;
+}
+
+.privacy-doc p {
+    margin-bottom: 14px;
+    text-align: justify;
+}
+
+.privacy-list {
+    margin: 0 0 14px;
+    padding-left: 22px;
+}
+
+.privacy-list li {
+    list-style: disc;
+    margin-bottom: 8px;
+}
+
+.privacy-table th {
+    width: 32%;
+    background: #fafbfd;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* 页脚法律链接 */
+.copyright a {
+    color: #bbb;
+    text-decoration: underline;
+}
+
+.copyright a:hover {
+    color: #fff;
+}
