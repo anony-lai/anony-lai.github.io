@@ -47,10 +47,18 @@ const ProductPage = {
         }[c]));
     },
 
-    /** 单个产品卡片 HTML */
-    cardHtml(p) {
+    /** 当前设备形态：mobile / tablet / desktop（device.js 未加载时按宽度兜底） */
+    device() {
+        if (window.Device && typeof Device.type === 'function') return Device.type();
+        const w = window.innerWidth || 1024;
+        return w <= 767.98 ? 'mobile' : (w <= 991.98 ? 'tablet' : 'desktop');
+    },
+
+    /** 单个产品卡片 HTML：小屏设备输出紧凑卡片 */
+    cardHtml(p, compact) {
+        const cls = compact ? 'product-card product-card--compact' : 'product-card';
         return `
-        <div class="product-card">
+        <div class="${cls}">
             <a href="product-detail.html?id=${encodeURIComponent(p.id)}" class="product-img-link">
                 <img src="${this.escapeHtml(p.image)}" alt="${this.escapeHtml(p.model)}" class="product-img" loading="lazy">
             </a>
@@ -81,16 +89,22 @@ const ProductPage = {
                 .map(c => ({ cat: c, items: products.filter(p => p.category === c.key) }))
                 .filter(g => g.items.length > 0);
 
+            // 按设备形态决定网格列数与卡片款式：手机两列紧凑卡，桌面自适应大卡
+            const device = this.device();
+            const compact = device === 'mobile';
+
             container.innerHTML = groups.map(g => `
                 <h3 class="mb-4 mt-4 series-title">${this.escapeHtml(this.lang() === 'cn' ? g.cat.cn : g.cat.en)}</h3>
-                <div class="product-grid mb-5">
-                    ${g.items.map(p => this.cardHtml(p)).join('')}
+                <div class="product-grid mb-5" data-device="${device}">
+                    ${g.items.map(p => this.cardHtml(p, compact)).join('')}
                 </div>
             `).join('');
         } catch (e) {
             container.innerHTML = `<p class="text-center text-muted py-5">${this.ui('loadError')}</p>`;
         }
         this.renderFilter();
+        // 通知依赖列表高度的外围组件（如返回顶部按钮）重新测量阈值
+        document.dispatchEvent(new CustomEvent('productsRendered'));
     },
 
     renderFilter() {
@@ -106,8 +120,30 @@ const ProductPage = {
             btn.addEventListener('click', () => {
                 this.currentFilter = btn.getAttribute('data-cat');
                 this.renderList();
+                this.centerActiveFilter();
             });
         });
+    },
+
+    /** 横向滑动的分类栏：把当前选中项滚到可视中部（不影响页面纵向滚动） */
+    centerActiveFilter() {
+        const bar = document.getElementById('category-filter');
+        if (!bar) return;
+        const active = bar.querySelector('.filter-btn.active');
+        if (!active || bar.scrollWidth <= bar.clientWidth) return;
+        const target = active.offsetLeft - (bar.clientWidth - active.offsetWidth) / 2;
+        try {
+            bar.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+        } catch (e) {
+            bar.scrollLeft = Math.max(0, target);
+        }
+    },
+
+    /** 当前导航栏高度（CSS 变量 --nav-h） */
+    navHeight() {
+        const v = getComputedStyle(document.documentElement).getPropertyValue('--nav-h');
+        const n = parseInt(v, 10);
+        return isNaN(n) ? 70 : n;
     },
 
     /* ---------------- product-detail.html ---------------- */
@@ -115,8 +151,11 @@ const ProductPage = {
         const box = document.getElementById('product-detail-box');
         if (!box) return;
         const id = new URLSearchParams(window.location.search).get('id');
+        // 骨架占位：数据/图片回来之前保持高度，杜绝内容涌入造成的跳动
+        box.classList.add('detail-loading');
         const p = id ? await ProductStore.get(id) : null;
         if (!p) {
+            box.classList.remove('detail-loading');
             box.innerHTML = `<p class="text-center text-muted py-5">${this.ui('notFound')}</p>`;
             return;
         }
@@ -127,13 +166,15 @@ const ProductPage = {
         ).join('');
 
         let outdoorHtml = '';
+        const device = this.device();
+        const compact = device === 'mobile';
         if (p.outdoor && p.outdoor.length) {
             const units = (await Promise.all(p.outdoor.map(oid => ProductStore.get(oid)))).filter(Boolean);
             if (units.length) {
                 outdoorHtml = `
                     <h4 class="mt-5 mb-3">${this.ui('outdoor')}</h4>
-                    <div class="product-grid">
-                        ${units.map(u => this.cardHtml(u)).join('')}
+                    <div class="product-grid" data-device="${device}">
+                        ${units.map(u => this.cardHtml(u, compact)).join('')}
                     </div>`;
             }
         }
@@ -159,6 +200,9 @@ const ProductPage = {
                 </div>
             </div>
             ${outdoorHtml}`;
+
+        // 内容已就位（主图有 aspect-ratio 占位，布局此刻已定）-> 撤掉骨架
+        box.classList.remove('detail-loading');
 
         this.renderManual(p);
     },
@@ -220,7 +264,7 @@ const ProductPage = {
         if (!box) return;
         const items = await ProductStore.featured();
         box.innerHTML = items.map(p => `
-            <div class="col-md-6 col-lg-3 mb-4">
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
                 <div class="card h-100 product-card">
                     <a href="product-detail.html?id=${encodeURIComponent(p.id)}">
                         <img src="${this.escapeHtml(p.image)}" class="card-img-top" alt="${this.escapeHtml(p.model)}" loading="lazy">
@@ -243,6 +287,20 @@ const ProductPage = {
             this.renderDetail();
             this.renderFeatured();
         });
+        // 设备形态变化（浏览器窗口缩放 / 手机横竖屏切换）后按新形态重排产品列表
+        const rerender = () => {
+            this.renderList();
+            this.renderFeatured();
+        };
+        if (window.Device && typeof Device.onChange === 'function') {
+            Device.onChange(rerender);
+        } else {
+            let timer = null;
+            window.addEventListener('resize', () => {
+                clearTimeout(timer);
+                timer = setTimeout(rerender, 200);
+            });
+        }
     }
 };
 
