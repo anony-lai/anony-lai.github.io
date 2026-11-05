@@ -765,13 +765,15 @@ footer {
     background-size: var(--hero-fit, cover);
 }
 
-/* 遮罩层：桌面横向渐变保证左侧文字可读 */
+/* 遮罩层：桌面横向渐变保证左侧文字可读
+   左侧保持较高不透明（0.92→0.78）覆盖更宽，确保白底/亮部产品图上白字仍清晰，
+   同时把产品品牌标压入暗区避免与文字冲突；右侧快速减淡（0.12）保证产品可见。 */
 .hero-slide::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: linear-gradient(90deg, rgba(15, 32, 39, 0.9) 0%, rgba(15, 32, 39, 0.6) 45%, rgba(15, 32, 39, 0.18) 100%);
+    background: linear-gradient(90deg, rgba(15, 32, 39, 0.92) 0%, rgba(15, 32, 39, 0.78) 38%, rgba(15, 32, 39, 0.40) 68%, rgba(15, 32, 39, 0.12) 100%);
     pointer-events: none;
 }
 
@@ -780,6 +782,15 @@ footer {
     position: relative;
     z-index: 3;
     width: 100%;
+    /* 关键修复：文案层 z-index 高于左右箭头，若不放开 pointer-events，
+       箭头图标（位于文案层覆盖的「垂直居中 + 屏幕边缘」区域）会被拦截点击。
+       此处让文案层对指针透明，点击穿透到下层箭头；交互元素再单独恢复。 */
+    pointer-events: none;
+}
+.hero-slide-body a,
+.hero-slide-body .btn,
+.hero-slide-body button {
+    pointer-events: auto;   /* 恢复 CTA 等可点击元素 */
 }
 
 .hero-slide-title {

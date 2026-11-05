@@ -168,18 +168,37 @@ const PRODUCTS_DATA = [
     },
     {
         id: 'qk-980', model: 'QK-980', category: 'inverter',
-        title: { cn: 'QK-980 顶置多功能 MPV 系列挂机', en: 'QK-980 Top-mounted Multifunctional MPV Series Unit' },
-        desc:  { cn: '顶置多功能 MPV 系列，12V/24V 两用，可搭配超薄一体外机 QK-610 或一体外机 QK-645。', en: 'Top-mounted multifunctional MPV series, 12V/24V dual use, paired with outdoor unit QK-610 or QK-645.' },
+        title: { cn: 'QK-980 顶置多功能 MPV 系列挂机（增强领航版）', en: 'QK-980 Top-mounted Multifunctional MPV Series Unit (Enhanced)' },
+        desc:  { cn: '顶置多功能 MPV 系列增强领航版，12V/24V/48V 三电压可选，双电机设计，可搭配超薄一体外机 QK-610 或一体外机 QK-645。', en: 'Enhanced top-mounted multifunctional MPV series, 12V/24V/48V triple voltage, dual-motor design, paired with outdoor unit QK-610 or QK-645.' },
         image: 'images/qk-980.jpg',
         specs: [
-            { label: { cn: '规格尺寸', en: 'Size' }, value: { cn: '980mm(长)×260mm(宽)×120mm(高)', en: '980mm(L)×260mm(W)×120mm(H)' } },
-            { label: { cn: '电流', en: 'Current' }, value: { cn: '1.5 / 0.8A', en: '1.5 / 0.8A' } },
-            { label: { cn: '功率', en: 'Power' }, value: { cn: '18 / 19W', en: '18 / 19W' } },
-            { label: { cn: '电压', en: 'Voltage' }, value: { cn: 'DC-12V / 24V 两用', en: 'DC-12V / 24V Dual' } },
-            { label: { cn: '风流', en: 'Air Flow' }, value: { cn: '6 m/s', en: '6 m/s' } },
-            { label: { cn: '噪音', en: 'Noise' }, value: { cn: '56 dBA', en: '56 dBA' } }
+            { label: { cn: '规格尺寸', en: 'Size' }, value: { cn: '98cm(长)×26cm(宽)×12cm(高)', en: '98cm(L)×26cm(W)×12cm(H)' } },
+            { label: { cn: '功率', en: 'Power' }, value: { cn: '28W×2', en: '28W×2' } },
+            { label: { cn: '电流', en: 'Current' }, value: { cn: '1.2A-2.4A×2', en: '1.2A-2.4A×2' } },
+            { label: { cn: '电压', en: 'Voltage' }, value: { cn: '12V / 24V / 48V', en: '12V / 24V / 48V' } },
+            { label: { cn: '风速', en: 'Air Flow' }, value: { cn: '5.5 m/s', en: '5.5 m/s' } },
+            { label: { cn: '风量', en: 'Air Volume' }, value: { cn: '665 m³/h', en: '665 m³/h' } },
+            { label: { cn: '噪音', en: 'Noise' }, value: { cn: '56 dB(A)', en: '56 dB(A)' } },
+            { label: { cn: '信号输出(VSP)', en: 'VSP(Output)' }, value: { cn: 'DC12V: 4V-9V / DC24V: 9V-19V / DC48V: 4V-9V', en: 'DC12V: 4V-9V / DC24V: 9V-19V / DC48V: 4V-9V' } }
         ],
         outdoor: ['qk-610', 'qk-645']
+    },
+    {
+        id: 'qk-1080', model: 'QK-1080', category: 'inverter',
+        title: { cn: 'QK-1080 至尊版 顶置多功能 MPV 系列挂机', en: 'QK-1080 Supreme Edition Top-mounted Multifunctional MPV Series Unit' },
+        desc:  { cn: '至尊版顶置多功能 MPV 系列，12V/24V/48V 三电压可选，双电机设计，可搭配一体外机 QK-150。', en: 'Supreme edition top-mounted multifunctional MPV series, 12V/24V/48V triple voltage, dual-motor design, paired with integrated outdoor unit QK-150.' },
+        image: 'images/qk-1080.jpg',
+        specs: [
+            { label: { cn: '规格尺寸', en: 'Size' }, value: { cn: '108cm(长)×27.8cm(宽)×13.7cm(高)', en: '108cm(L)×27.8cm(W)×13.7cm(H)' } },
+            { label: { cn: '功率', en: 'Power' }, value: { cn: '28W×2', en: '28W×2' } },
+            { label: { cn: '电流', en: 'Current' }, value: { cn: '1.2A-2.4A×2', en: '1.2A-2.4A×2' } },
+            { label: { cn: '电压', en: 'Voltage' }, value: { cn: '12V / 24V / 48V', en: '12V / 24V / 48V' } },
+            { label: { cn: '风速', en: 'Air Flow' }, value: { cn: '5.5 m/s', en: '5.5 m/s' } },
+            { label: { cn: '风量', en: 'Air Volume' }, value: { cn: '720 m³/h', en: '720 m³/h' } },
+            { label: { cn: '噪音', en: 'Noise' }, value: { cn: '58 dB(A)', en: '58 dB(A)' } },
+            { label: { cn: '信号输出(VSP)', en: 'VSP(Output)' }, value: { cn: 'DC12V: 4V-9V / DC24V: 9V-19V / DC48V: 4V-9V', en: 'DC12V: 4V-9V / DC24V: 9V-19V / DC48V: 4V-9V' } }
+        ],
+        outdoor: ['qk-150']
     },
 
     /* ---------- 手动 / 智能挂机系列 ---------- */
@@ -345,6 +364,58 @@ const PRODUCTS_DATA = [
         ]
     },
 
+    {
+        id: 'qk-810', model: 'QK-810', category: 'manual',
+        title: { cn: 'QK-810 嵌入式一拖二房车中央空调主机', en: 'QK-810 Embedded One-to-Two RV Central Air Conditioning Host' },
+        desc:  { cn: '嵌入式一拖二房车中央空调主机，12V/24V/48V 三电压可选，可搭配一体外机 QK-150。', en: 'Embedded one-to-two RV central air conditioning host, 12V/24V/48V triple voltage, paired with integrated outdoor unit QK-150.' },
+        image: 'images/qk-810.jpg',
+        specs: [
+            { label: { cn: '规格尺寸', en: 'Size' }, value: { cn: '81cm(长)×30cm(宽)×19cm(高)', en: '81cm(L)×30cm(W)×19cm(H)' } },
+            { label: { cn: '功率', en: 'Power' }, value: { cn: '30W', en: '30W' } },
+            { label: { cn: '电流', en: 'Current' }, value: { cn: '1.5A-3.0A', en: '1.5A-3.0A' } },
+            { label: { cn: '电压', en: 'Voltage' }, value: { cn: '12V / 24V / 48V', en: '12V / 24V / 48V' } },
+            { label: { cn: '风速', en: 'Air Flow' }, value: { cn: '5.5 m/s', en: '5.5 m/s' } },
+            { label: { cn: '风量', en: 'Air Volume' }, value: { cn: '460 m³/h', en: '460 m³/h' } },
+            { label: { cn: '噪音', en: 'Noise' }, value: { cn: '55 dB(A)', en: '55 dB(A)' } },
+            { label: { cn: '信号输出(VSP)', en: 'VSP(Output)' }, value: { cn: 'DC12V: 4V-9V / DC24V: 9V-19V / DC48V: 4V-9V', en: 'DC12V: 4V-9V / DC24V: 9V-19V / DC48V: 4V-9V' } }
+        ],
+        outdoor: ['qk-150']
+    },
+    {
+        id: 'qk-608', model: 'QK-608', category: 'manual',
+        title: { cn: 'QK-608 一拖二中央空调副机', en: 'QK-608 One-to-Two Central Air Conditioning Sub-unit' },
+        desc:  { cn: '一拖二中央空调副机，12V/24V/48V 三电压可选，可搭配分体式外机 QK-210。', en: 'One-to-two central air conditioning sub-unit, 12V/24V/48V triple voltage, paired with split outdoor unit QK-210.' },
+        image: 'images/qk-608.jpg',
+        specs: [
+            { label: { cn: '规格尺寸', en: 'Size' }, value: { cn: '60.8cm(长)×24.2cm(宽)×17.3cm(高)', en: '60.8cm(L)×24.2cm(W)×17.3cm(H)' } },
+            { label: { cn: '功率', en: 'Power' }, value: { cn: '28W', en: '28W' } },
+            { label: { cn: '电流', en: 'Current' }, value: { cn: '1.2A-2.4A', en: '1.2A-2.4A' } },
+            { label: { cn: '电压', en: 'Voltage' }, value: { cn: '12V / 24V / 48V', en: '12V / 24V / 48V' } },
+            { label: { cn: '风速', en: 'Air Flow' }, value: { cn: '5.5 m/s', en: '5.5 m/s' } },
+            { label: { cn: '风量', en: 'Air Volume' }, value: { cn: '430 m³/h', en: '430 m³/h' } },
+            { label: { cn: '噪音', en: 'Noise' }, value: { cn: '56 dB(A)', en: '56 dB(A)' } },
+            { label: { cn: '信号输出(VSP)', en: 'VSP(Output)' }, value: { cn: 'DC12V: 4V-9V / DC24V: 9V-19V / DC48V: 4V-9V', en: 'DC12V: 4V-9V / DC24V: 9V-19V / DC48V: 4V-9V' } }
+        ],
+        outdoor: ['qk-210']
+    },
+    {
+        id: 'qk-398', model: 'QK-398', category: 'manual',
+        title: { cn: 'QK-398 挂窗式帐篷移动小空调', en: 'QK-398 Window-type Tent Portable Mini Air Conditioner' },
+        desc:  { cn: '挂窗式帐篷移动小空调，12V/24V 双电压，一体式小型制冷，适合帐篷与移动场景。', en: 'Window-type tent portable mini air conditioner, 12V/24V dual voltage, integrated compact cooling, ideal for tents and mobile scenarios.' },
+        image: 'images/qk-398.jpg',
+        specs: [
+            { label: { cn: '规格尺寸', en: 'Size' }, value: { cn: '40cm(长)×31cm(宽)×23cm(高)', en: '40cm(L)×31cm(W)×23cm(H)' } },
+            { label: { cn: '电压', en: 'Voltage' }, value: { cn: '12V / 24V', en: '12V / 24V' } },
+            { label: { cn: '功率', en: 'Power' }, value: { cn: '150W-300W', en: '150W-300W' } },
+            { label: { cn: '电流', en: 'Current' }, value: { cn: '12A', en: '12A' } },
+            { label: { cn: '冷媒', en: 'Refrigerant' }, value: { cn: 'R134a', en: 'R134a' } },
+            { label: { cn: '制冷量', en: 'Cooling Capacity' }, value: { cn: '300W-700W', en: '300W-700W' } },
+            { label: { cn: '风速', en: 'Air Flow' }, value: { cn: '6 m/s', en: '6 m/s' } },
+            { label: { cn: '风量', en: 'Air Volume' }, value: { cn: '220 m³/h', en: '220 m³/h' } },
+            { label: { cn: '噪音', en: 'Noise' }, value: { cn: '56 dB(A)', en: '56 dB(A)' } }
+        ]
+    },
+
     /* ---------- 室外机系列 ---------- */
     {
         id: 'qk-600', model: 'QK-600', category: 'outdoor',
@@ -422,6 +493,50 @@ const PRODUCTS_DATA = [
             { label: { cn: '最大吸气压力', en: 'Max Suction Pressure' }, value: { cn: '0.25 - 0.55 MPa', en: '0.25 - 0.55 MPa' } },
             { label: { cn: '电压', en: 'Voltage' }, value: { cn: '12V / 24V / 48V（可选）', en: '12V / 24V / 48V (Optional)' } },
             { label: { cn: '外机尺寸', en: 'Unit Size' }, value: { cn: '645×390×195mm（长×宽×高）', en: '645×390×195mm (L×W×H)' } }
+        ]
+    },
+    {
+        id: 'qk-150', model: 'QK-150', category: 'outdoor',
+        title: { cn: 'QK-150 分体式变频房车空调（一体外机）', en: 'QK-150 Split Inverter RV Air Conditioner (Integrated Outdoor Unit)' },
+        desc:  { cn: 'DC 双缸转子压缩机一体外机，48V/72V 可选，可搭配 QK-1080、QK-810 等挂机使用。', en: 'DC twin-cylinder rotary compressor integrated outdoor unit, 48V/72V optional, compatible with QK-1080, QK-810 and other indoor units.' },
+        image: 'images/out-qk150.jpg',
+        specs: [
+            { label: { cn: '电源', en: 'Power Supply' }, value: { cn: 'DC-48V / 72V（可选电压）', en: 'DC-48V / 72V (Optional)' } },
+            { label: { cn: '额定功率', en: 'Rated Power' }, value: { cn: '850 / 1150W', en: '850 / 1150W' } },
+            { label: { cn: '制冷量', en: 'Cooling Capacity' }, value: { cn: '2600 / 702W', en: '2600 / 702W' } },
+            { label: { cn: '冷媒类型', en: 'Refrigerant' }, value: { cn: 'R134a', en: 'R134a' } },
+            { label: { cn: '最大冷媒充注量', en: 'Max Refrigerant Charge' }, value: { cn: '650g', en: '650g' } },
+            { label: { cn: '额定电流', en: 'Rated Current' }, value: { cn: '18A:24A/12A:16A', en: '18A:24A/12A:16A' } },
+            { label: { cn: '防护等级', en: 'Protection Grade' }, value: { cn: 'E', en: 'E' } },
+            { label: { cn: '吸气侧最高工作压力', en: 'Max Suction Pressure' }, value: { cn: '0.2 - 0.3 MPa', en: '0.2 - 0.3 MPa' } },
+            { label: { cn: '排气侧最高工作压力', en: 'Max Discharge Pressure' }, value: { cn: '1.6 MPa', en: '1.6 MPa' } },
+            { label: { cn: '热交换最大工作压力', en: 'Max Heat Exchange Pressure' }, value: { cn: '2.0 MPa', en: '2.0 MPa' } },
+            { label: { cn: '噪音', en: 'Noise' }, value: { cn: '55 dB(A)', en: '55 dB(A)' } },
+            { label: { cn: '冷重比', en: 'Cooling-to-weight Ratio' }, value: { cn: '84 W/kg', en: '84 W/kg' } },
+            { label: { cn: '防触电保护类别', en: 'Electric Shock Protection Class' }, value: { cn: 'III 类', en: 'Class III' } },
+            { label: { cn: '外机尺寸', en: 'Unit Size' }, value: { cn: '600×380×160mm（长×宽×高）', en: '600×380×160mm (L×W×H)' } }
+        ]
+    },
+    {
+        id: 'qk-210', model: 'QK-210', category: 'outdoor',
+        title: { cn: 'QK-210 分体式变频房车空调（分体外机）', en: 'QK-210 Split Inverter RV Air Conditioner (Split Outdoor Unit)' },
+        desc:  { cn: '分体式外机，12V/24V/48V 可选，可搭配 QK-608 副机使用。', en: 'Split outdoor unit, 12V/24V/48V optional, compatible with QK-608 sub-unit.' },
+        image: 'images/out-qk210.jpg',
+        specs: [
+            { label: { cn: '电源', en: 'Power Supply' }, value: { cn: 'DC-12V / 24V / 48V（可选电压）', en: 'DC-12V / 24V / 48V (Optional)' } },
+            { label: { cn: '额定功率', en: 'Rated Power' }, value: { cn: '850 / 265W', en: '850 / 265W' } },
+            { label: { cn: '制冷量', en: 'Cooling Capacity' }, value: { cn: '2600 / 702W', en: '2600 / 702W' } },
+            { label: { cn: '冷媒类型', en: 'Refrigerant' }, value: { cn: 'R134a', en: 'R134a' } },
+            { label: { cn: '最大冷媒充注量', en: 'Max Refrigerant Charge' }, value: { cn: '650g', en: '650g' } },
+            { label: { cn: '额定电流', en: 'Rated Current' }, value: { cn: '38 / 11A', en: '38 / 11A' } },
+            { label: { cn: '防护等级', en: 'Protection Grade' }, value: { cn: 'E', en: 'E' } },
+            { label: { cn: '吸气侧最高工作压力', en: 'Max Suction Pressure' }, value: { cn: '0.2 - 0.3 MPa', en: '0.2 - 0.3 MPa' } },
+            { label: { cn: '排气侧最高工作压力', en: 'Max Discharge Pressure' }, value: { cn: '2.0 MPa', en: '2.0 MPa' } },
+            { label: { cn: '热交换最大工作压力', en: 'Max Heat Exchange Pressure' }, value: { cn: '2.0 MPa', en: '2.0 MPa' } },
+            { label: { cn: '噪音', en: 'Noise' }, value: { cn: '56 dB(A)', en: '56 dB(A)' } },
+            { label: { cn: '冷重比', en: 'Cooling-to-weight Ratio' }, value: { cn: '84 W/kg', en: '84 W/kg' } },
+            { label: { cn: '防触电保护类别', en: 'Electric Shock Protection Class' }, value: { cn: 'III 类', en: 'Class III' } },
+            { label: { cn: '外机尺寸', en: 'Unit Size' }, value: { cn: '255×180×180mm（长×宽×高）', en: '255×180×180mm (L×W×H)' } }
         ]
     }
 ];

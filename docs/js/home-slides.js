@@ -47,6 +47,15 @@ const HOME_SLIDES = [
     },
     {
         enabled: true,
+        image: 'images/qk-398.jpg',
+        fit: 'cover',            // 与其它幻灯片一致全幅铺满当前画幅；白字借左侧深色渐变保证可读
+        align: 'left',
+        title: { cn: 'QK-398 挂窗式帐篷移动小空调', en: 'QK-398 Window-type Tent Portable Mini AC' },
+        desc:  { cn: '12V / 24V 双电压，一体式小型制冷，专为帐篷与移动场景设计，制冷量 300W-700W，静音 56dB(A)。', en: '12V/24V dual voltage, integrated compact cooling for tents and mobile scenarios, 300W-700W cooling, 56dB(A) quiet.' },
+        btn:   { text: { cn: '了解 QK-398', en: 'Explore QK-398' }, href: 'product-detail.html?id=qk-398' }
+    },
+    {
+        enabled: true,
         image: 'images/out-qk600.jpg',
         align: 'right',
         title: { cn: 'QK-600 分体式变频房车空调', en: 'QK-600 Split Inverter RV Air Conditioner' },
