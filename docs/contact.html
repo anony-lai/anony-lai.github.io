@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#0f2027">
+    <title>联系我们 - 广州亿铭工业自动化</title>
+    <link href="vendor/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">YIMING <span style="color:#e74c3c">AUTO</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="nav_home">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html" data-i18n="nav_products">产品中心</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" data-i18n="nav_about">关于我们</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html" data-i18n="nav_contact">联系我们</a></li>
+                    <li class="nav-item ms-3"><button class="btn btn-outline-danger btn-sm" onclick="switchLang()">EN/CN</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面标题 -->
+    <header class="page-header">
+        <div class="container text-center">
+            <h1 data-i18n="page_title_contact">联系我们</h1>
+            <p>Contact Us</p>
+        </div>
+    </header>
+
+    <!-- 联系内容 -->
+    <section class="section-container">
+        <div class="container">
+            <div class="row">
+                <!-- 左侧：联系信息 -->
+                <div class="col-lg-5 mb-4">
+                    <div class="contact-info p-4 bg-white shadow-sm h-100">
+                        <h3 class="mb-4" data-i18n="contact_info_title">联系信息</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_company">公司名称：</strong><br>
+                                <span data-i18n="footer_company_name">广州亿铭工业自动化科技有限公司</span>
+                            </li>
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_address">地址：</strong><br>
+                                <span data-i18n="footer_address">广州市增城区增江街东方村光墩路38号</span>
+                            </li>
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_phone">电话：</strong><br>
+                                <a href="tel:+862082627482">+86-20-82627482</a>
+                            </li>
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_mobile">手机：</strong><br>
+                                <a href="tel:+8613352862388">+86-13352862388</a>
+                            </li>
+                            <li class="mb-3">
+                                <strong data-i18n="contact_label_email">邮箱：</strong><br>
+                                <a href="mailto:597441084@qq.com">597441084@qq.com</a>
+                            </li>
+                        </ul>
+                        
+                        <!-- ✅ 添加微信按钮 -->
+                        <button class="btn btn-success w-100 mt-3" data-bs-toggle="modal" data-bs-target="#wechatModal">
+                            📱 <span data-i18n="contact_wechat_btn">点击查看微信二维码</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 右侧：留言表单 -->
+                <div class="col-lg-7">
+                    <div class="p-4 bg-white shadow-sm h-100">
+                        <h3 class="mb-4" data-i18n="form_message">留言内容</h3>
+                        
+                        <!-- 留言表单：通过 Static Forms 接收（AJAX 提交，不离开本站） -->
+                        <!-- ⚠️ 请把下面的 value 换成你在 https://staticforms.dev 注册后拿到的 API Key（形如 sf_xxx） -->
+                        <form id="contact-form" novalidate>
+                            <input type="hidden" name="apiKey" id="sf-api-key" value="sf_602f355c4db6295875a408b4">
+                            <input type="hidden" name="source" value="qk-ac.com Contact Page">
+                            <!--  honeypot：机器人会填、真人看不见，用于过滤垃圾留言 -->
+                            <input type="checkbox" name="botcheck" id="botcheck" style="display:none !important;" tabindex="-1" autocomplete="off">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" name="name" class="form-control" placeholder="您的姓名" data-i18n-placeholder="form_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="电子邮件" data-i18n-placeholder="form_email" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" name="company" class="form-control" placeholder="公司名称" data-i18n-placeholder="form_company">
+                            </div>
+
+                            <div class="mb-3">
+                                <select name="subject" class="form-select" required>
+                                    <option value="" disabled selected data-i18n="form_subject">咨询主题</option>
+                                    <option value="产品咨询" data-i18n="form_subject_opt1">产品咨询</option>
+                                    <option value="技术支持" data-i18n="form_subject_opt2">技术支持</option>
+                                    <option value="其他" data-i18n="form_subject_opt3">其他</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <textarea name="message" class="form-control" rows="5" placeholder="留言内容..." data-i18n-placeholder="form_message" required></textarea>
+                            </div>
+
+                            <!-- 提交结果提示区（不跳转页面） -->
+                            <div id="form-alert" class="mb-3" style="display:none;"></div>
+
+                            <button type="submit" id="form-submit-btn" class="btn btn-danger btn-lg w-100" data-i18n="form_submit">发送留言</button>
+                            <p class="small text-muted mt-3 mb-0" data-i18n="form_privacy_note">提交即表示您同意我们按《隐私政策》处理您填写的信息，留言将通过第三方表单服务转发至本公司邮箱。</p>
+                            <p class="small mt-1 mb-0"><a href="private.html" data-i18n="nav_privacy">隐私政策</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ 微信二维码弹窗 -->
+    <div class="modal fade" id="wechatModal" tabindex="-1" aria-labelledby="wechatModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="wechatModalLabel" data-i18n="wechat_modal_title">微信扫码联系我们</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <!-- 请将 src 替换为你真实的微信二维码图片路径 -->
+                    <img src="images/wechat-qr.jpg" alt="微信二维码" class="img-fluid" style="max-width: 300px; width: 100%;">
+                    <p class="mt-3 text-muted" data-i18n="wechat_modal_desc">请使用微信扫一扫添加好友</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>© 2026 Guangzhou Yiming Industrial Automation Technology Co., Ltd. All Rights Reserved.</p>
+                <p class="mt-2 mb-0"><a href="private.html" data-i18n="nav_privacy">隐私政策</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="vendor/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- 表单提交逻辑（Web3Forms + AJAX，提交后停留在站内） -->
+    <script>
+    (function () {
+        var form = document.getElementById('contact-form');
+        var alertBox = document.getElementById('form-alert');
+        var submitBtn = document.getElementById('form-submit-btn');
+        if (!form) return;
+
+        var MSG = {
+            sending: { cn: '发送中...', en: 'Sending...' },
+            success: { cn: '留言发送成功！我们将尽快与您联系。', en: 'Message sent successfully! We will contact you soon.' },
+            error: { cn: '发送失败，请稍后重试，或直接发邮件到 597441084@qq.com。', en: 'Failed to send. Please try again later, or email us directly at 597441084@qq.com.' },
+            noKey: { cn: '表单接收服务尚未配置，请先在 staticforms.dev 获取 API Key 并填入代码。', en: 'Form service is not configured yet. Please get an API Key from staticforms.dev.' }
+        };
+        function lang() { return localStorage.getItem('qiangke_lang') || 'cn'; }
+        function t(k) { return MSG[k][lang()]; }
+
+        function showAlert(msg, type) {
+            alertBox.className = 'mb-3 alert alert-' + type;
+            alertBox.textContent = msg;
+            alertBox.style.display = 'block';
+            if (typeof alertBox.scrollIntoView === 'function') {
+                alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            // honeypot 被勾选 => 机器人，静默忽略
+            if (document.getElementById('botcheck').checked) return;
+
+            var fd = new FormData(form);
+            var key = fd.get('apiKey');
+            if (!key || String(key).indexOf('YOUR_') === 0) { showAlert(t('noKey'), 'warning'); return; }
+            // 让通知邮件可以直接「回复」到客户邮箱
+            if (fd.get('email')) fd.set('replyTo', fd.get('email'));
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = t('sending');
+            alertBox.style.display = 'none';
+
+            try {
+                var res = await fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    body: fd
+                });
+                var json = await res.json();
+                if (json.success) {
+                    showAlert(t('success'), 'success');
+                    form.reset();
+                } else {
+                    showAlert(t('error'), 'danger');
+                }
+            } catch (err) {
+                showAlert(t('error'), 'danger');
+            } finally {
+                submitBtn.disabled = false;
+                // 恢复按钮文案并按当前语言重新渲染
+                if (typeof applyTranslations === 'function') applyTranslations();
+                else submitBtn.textContent = lang() === 'cn' ? '发送留言' : 'Send Message';
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
